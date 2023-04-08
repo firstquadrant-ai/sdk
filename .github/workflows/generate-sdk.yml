@@ -1,20 +1,33 @@
+name: Generate SDKs
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/generate-sdk.yml
 jobs:
   generate-sdks:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     name: Generate SDKs
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Download OpenAPI spec
+        run: |
+          curl -o openapi.yml https://firstquadrant-ai.github.io/docs/openapi.yml
 
       - name: Generate Angular Client
         uses: openapi-generators/openapitools-generator-action@v1
         with:
           generator: typescript-angular
-          openapi-url: https://firstquadrant-ai.github.io/docs/openapi.yml
+          openapi-file: openapi.yml
 
-      - name: Do something with the client
-        run: |
-          cd typescript-angular-client
+      - name: Commit changes to repo
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore(app): Generate updated SDKs"
