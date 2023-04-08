@@ -8,16 +8,12 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v2
-      
-      - name: Download latest OpenAPI specification
-        run: |
-          curl -L https://firstquadrant-ai.github.io/docs/openapi.yml -o openapi.yml
 
       - name: Generate Angular Client
         uses: openapi-generators/openapitools-generator-action@v1
         with:
           generator: typescript-angular
-          input-spec: openapi.yml
+          openapi-url: https://firstquadrant-ai.github.io/docs/openapi.yml
 
       - name: Do something with the client
         run: |
