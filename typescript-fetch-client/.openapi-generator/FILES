@@ -1,0 +1,10 @@
+.openapi-generator-ignore
+apis/IncomingWebhooksApi.ts
+apis/TeamsApi.ts
+apis/index.ts
+index.ts
+models/MarkConversationAsWonBody.ts
+models/Success.ts
+models/Team.ts
+models/index.ts
+runtime.ts
