@@ -21,10 +21,40 @@ jobs:
         run: |
           curl -o openapi.yml https://firstquadrant-ai.github.io/docs/openapi.yml
 
+      - name: Generate Go Client
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: go
+          openapi-file: openapi.yml
+
+      - name: Generate PHP Client
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: php
+          openapi-file: openapi.yml
+
+      - name: Generate Python Client
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: python
+          openapi-file: openapi.yml
+
       - name: Generate Angular Client
         uses: openapi-generators/openapitools-generator-action@v1
         with:
           generator: typescript-angular
+          openapi-file: openapi.yml
+
+      - name: Generate Axios Client
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: typescript-axios
+          openapi-file: openapi.yml
+
+      - name: Generate Fetch Client
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: typescript-fetch
           openapi-file: openapi.yml
 
       - name: Commit changes to repo
