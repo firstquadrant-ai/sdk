@@ -1,0 +1,17 @@
+.gitignore
+.openapi-generator-ignore
+README.md
+api.module.ts
+api/api.ts
+api/incomingWebhooks.service.ts
+api/teams.service.ts
+configuration.ts
+encoder.ts
+git_push.sh
+index.ts
+model/markConversationAsWonBody.ts
+model/models.ts
+model/success.ts
+model/team.ts
+param.ts
+variables.ts
